@@ -1,0 +1,13 @@
+<div class="flex flex-col items-center my-5">
+  <div>
+    <app-loader *ngIf="!isModelLoaded"></app-loader>
+    <video #video autoplay
+      [ngClass]="{'hidden':!isModelLoaded, 'border-red-500':detectedFaces > 1, 'border-green-500':detectedFaces == 1, 'border-gray-500':detectedFaces < 1 || !isCameraOpen}"
+      class="w-[720px] h-[480px] object-cover border-[10px]"></video>
+  </div>
+  <div class="flex gap-5 mt-5 w-full justify-center">
+    <button [disabled]="!isModelLoaded" (click)="startCamera()"
+      class="mr-5 border-2 border-gray-800 px-5 py-2">Start</button>
+    <button [disabled]="!isModelLoaded" (click)="stopCamera()" class="border-2 border-gray-800 px-5 py-2">Stop</button>
+  </div>
+</div>
